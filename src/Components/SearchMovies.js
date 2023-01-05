@@ -5,7 +5,7 @@ export default function SearchMovies() {
     e.preventDefault();
 
     const query = "Jurassic Park";
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
+    const url = `https://api.themoviedb.org/3/search/movie/550?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
     
     const res = await fetch(url);
     const data = await res.json();
