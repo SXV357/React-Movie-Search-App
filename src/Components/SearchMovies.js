@@ -43,13 +43,7 @@ export default function SearchMovies() {
             movie.overview &&
             movie.release_date &&
             movie.poster_path ? (
-            <MovieCard
-              key={idx}
-              poster_path={movie.poster_path}
-              original_title={movie.original_title}
-              overview={movie.overview}
-              release_date={movie.release_date}
-            />
+            <MovieCard key={idx} movie={movie} />
           ) : null;
         })}
       </div>
