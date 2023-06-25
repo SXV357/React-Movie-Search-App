@@ -7,18 +7,14 @@ export default function SearchMovies() {
 
   const searchMovie = (event) => {
     event.preventDefault();
-    try {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setMovies(data.results);
-          console.log(data);
-        });
-    } catch {
-      throw new Error();
-    }
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=true`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.results);
+      })
+      .catch(err => console.log(`An error occurred when fetching the data for ${query}. Error: ${err}`))
   };
 
   return (
@@ -40,11 +36,10 @@ export default function SearchMovies() {
       <div className="movie-list">
         {movies.map((movie, idx) => {
           return movie.original_title &&
-            movie.overview &&
-            movie.release_date &&
-            movie.poster_path ? (
-            <MovieCard key={idx} movie={movie} />
-          ) : null;
+          movie.overview &&
+          movie.release_date &&
+          movie.poster_path && (
+          <MovieCard key={idx} movie={movie} />)
         })}
       </div>
     </div>

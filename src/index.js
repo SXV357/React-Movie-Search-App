@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import SearchMovies from "./Components/SearchMovies";
+import SearchMovies from "./SearchMovies";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
